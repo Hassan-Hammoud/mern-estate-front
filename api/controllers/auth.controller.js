@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { errorHandler } from "../utils/error.js";
 
 // sign up a new user and save it into the database
 
