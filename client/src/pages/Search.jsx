@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ListingItem from "../components/ListingItem";
 
 export default function Search() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [listing, setListing] = useState([]);
-  console.log("🚀 ~ Search ~ listing:", listing);
+  const [listings, setListings] = useState([]);
+  console.log("🚀 ~ Search ~ listing:", listings);
   const [sidebarData, setSidebarData] = useState({
     searchTerm: "",
     type: "all",
@@ -53,7 +54,7 @@ export default function Search() {
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/listing/get?${searchQuery}`);
       const data = await res.json();
-      setListing(data);
+      setListings(data);
       setLoading(false);
     };
     fetchListing();
@@ -226,10 +227,29 @@ export default function Search() {
       </div>
 
       {/* leftSide */}
-      <div className="">
+      <div className="flex-1">
         <h1 className="text-3xl font-semibold border-b px-5 p-3 md:p-3 md:mt-5    ">
           Listing results:
         </h1>
+        <div className="">
+          {!loading && listings.length === 0 && (
+            <p className="text-xl text-slate-700 p-5 md:p-3">
+              No listing found!
+            </p>
+          )}
+          {loading && (
+            <p className="text-xl text-slate-700 p-5 md:p-3">Loading...</p>
+          )}
+          <div className="flex">
+            {!loading &&
+              listings &&
+              listings.map((listing) => (
+                <div key={listing._id} className="flex flex-wrap gap-4 w-full">
+                  <ListingItem listing={listing} />
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
