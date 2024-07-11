@@ -33,7 +33,6 @@ export default function Profile() {
   const [formData, setFormData] = useState({});
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [userListings, setUserListings] = useState([]);
-  console.log("🚀 ~ Profile ~ userListings:", userListings);
 
   // firebase storage
   // allow read;

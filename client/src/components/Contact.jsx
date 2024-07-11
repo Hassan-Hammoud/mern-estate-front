@@ -11,7 +11,6 @@ Text.propTypes = {
 export default function Contact({ listing }) {
   const [landlord, setLandlord] = useState(null);
   const [message, setMessage] = useState("");
-  console.log("🚀 ~ Contact ~ message:", message);
 
   const onChange = (e) => {
     setMessage(e.target.value);

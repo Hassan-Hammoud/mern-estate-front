@@ -12,9 +12,6 @@ export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
   const [saleListings, setSaleListings] = useState([]);
   const [rentListings, setRentListings] = useState([]);
-  console.log("🚀 ~ Home ~ offerListings:", offerListings);
-  console.log("🚀 ~ Home ~ rentListings:", rentListings);
-  console.log("🚀 ~ Home ~ saleListings:", saleListings);
 
   useEffect(() => {
     const fetchOfferListings = async () => {
