@@ -248,7 +248,7 @@ export default function Search() {
 
       {/* leftSide */}
       <div className="flex-1">
-        <h1 className="text-3xl font-semibold border-b px-5 p-3 md:p-3 md:mt-5    ">
+        <h1 className="text-3xl font-semibold border-b px-5 p-3  md:p-6 md:mt-5    ">
           Listing results:
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
