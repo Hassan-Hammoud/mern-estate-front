@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { Navigation } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import { useSelector } from "react-redux";
 import {
@@ -23,7 +23,7 @@ Text.propTypes = {
 
 export default function Listing() {
   const { currentUser } = useSelector((state) => state.user);
-  SwiperCore.use([Navigation]);
+  SwiperCore.use([Navigation, Autoplay, EffectFade]);
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -65,7 +65,13 @@ export default function Listing() {
       )}
       {listing && !loading && !error && (
         <div>
-          <Swiper navigation>
+          <Swiper
+            navigation
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            speed={1500}
+          >
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
